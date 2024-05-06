@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private Animator animator;
     public int health = 5;
+    public EnemySpawner enemySpawner;
     private Rigidbody2D rb2d;
     private Vector2 movementDirection;
 
@@ -54,4 +55,13 @@ public class PlayerController : MonoBehaviour
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, minY, maxY);
         transform.position = clampedPosition;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            enemySpawner.MultiplySpawnRate();
+        }
+    }
+
 }

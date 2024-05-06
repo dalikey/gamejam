@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int damage = 1;
     private Rigidbody2D rb2d;
     private GameObject player;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
