@@ -3,14 +3,20 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     public float speed;
+    public float lifetime = 2f;
 
-    private void Update()
+    private Vector2 direction;
+
+    void Start()
     {
-        // Calculate the direction towards the mouse position
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+        direction = (mousePosition - (Vector2)transform.position).normalized;
 
-        // Move the object in the calculated direction
+        Destroy(gameObject, lifetime);
+    }
+
+    void Update()
+    {
         transform.Translate(direction * speed * Time.deltaTime);
     }
 }
