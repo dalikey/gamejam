@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &329992843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329992844}
+  - component: {fileID: 329992845}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &329992844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329992843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.24, y: -0.010000005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &329992845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329992843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d44ede138f60b49885b0b8a7513005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 2619425551092105309, guid: 0ab6f1daf3997a34f9d3c966ae1f261b, type: 3}
+  initialEnemyCount: 5
+  spawnInterval: 2
+  spawnRadius: 5
+  enemySpeedIncrease: 0.5
+  player: {fileID: 531499373}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +265,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &531499373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2619425551092105309, guid: 441c2623f55fa964eb8c4c5a53d411e7, type: 3}
+  m_PrefabInstance: {fileID: 3890957959434129463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3890957959434129463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229,11 +284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6805314739635927842, guid: 441c2623f55fa964eb8c4c5a53d411e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.11
       objectReference: {fileID: 0}
     - target: {fileID: 6805314739635927842, guid: 441c2623f55fa964eb8c4c5a53d411e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.07
       objectReference: {fileID: 0}
     - target: {fileID: 6805314739635927842, guid: 441c2623f55fa964eb8c4c5a53d411e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -278,3 +333,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 3890957959434129463}
+  - {fileID: 329992844}
