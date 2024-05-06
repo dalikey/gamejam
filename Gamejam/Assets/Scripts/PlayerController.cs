@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpawnProjectile spawner;
     public int health = 5;
     public EnemySpawner enemySpawner;
     private Rigidbody2D rb2d;
@@ -29,6 +30,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            spawner.Spawn(transform.position);
+        }
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -63,5 +69,4 @@ public class PlayerController : MonoBehaviour
             enemySpawner.MultiplySpawnRate();
         }
     }
-
 }
