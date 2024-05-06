@@ -37,7 +37,10 @@ public class EnemySpawner : MonoBehaviour
     public void MultiplySpawnRate()
     {
         CancelInvoke("SpawnEnemy");
-        spawnInterval -= 0.3f;
+        if (spawnInterval > 0.01f)
+        {
+            spawnInterval -= 0.3f;
+        }
         InvokeRepeating("SpawnEnemy", 0f, spawnInterval);
     }
 }
