@@ -2,14 +2,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField] private float movementSpeed = 4f;
+    [SerializeField] private float movementSpeed = 5f;
     private Rigidbody2D rb2d;
     private Vector2 movementDirection;
+
+    private float minX, maxX, minY, maxY;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
+        // Calculate the boundaries of the screen
+        Vector3 lowerLeftCorner = Camera.main.ScreenToWorldPoint(Vector3.zero);
+        Vector3 upperRightCorner = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+        // Update the boundaries considering the size of the player object
+        minX = lowerLeftCorner.x + 0.5f;
+        maxX = upperRightCorner.x - 0.5f;
+        minY = lowerLeftCorner.y + 0.5f;
+        maxY = upperRightCorner.y - 0.5f;
     }
 
     void Update()
@@ -22,6 +33,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Move the player
         rb2d.velocity = movementDirection * movementSpeed;
+
+        // Clamp the position to the screen boundaries
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, minY, maxY);
+        transform.position = clampedPosition;
     }
 }
