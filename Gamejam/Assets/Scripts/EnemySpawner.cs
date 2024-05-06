@@ -3,12 +3,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public int initialEnemyCount = 5;
     public float spawnInterval = 1.5f;
     public float spawnRadius = 5f;
     public float enemySpeedIncrease = 0.5f;
     public GameObject player;
-
 
     void Start()
     {
@@ -28,14 +26,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void IncreaseEnemies()
-    {
-        initialEnemyCount++;
-        enemySpeedIncrease += 0.7f;
-    }
-
     public void MultiplySpawnRate()
     {
+        // Multiply the spawn rate (decrease spawn interval)
         CancelInvoke("SpawnEnemy");
         if (spawnInterval > 0.01f)
         {
