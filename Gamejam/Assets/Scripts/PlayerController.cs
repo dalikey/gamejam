@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     private float minX, maxX, minY, maxY;
 
+    public Animator animator;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -29,6 +31,15 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         movementDirection = new Vector2(moveHorizontal, moveVertical);
+
+        if (movementDirection != Vector2.zero)
+        {
+            animator.SetBool("MovingFront", true);
+        }
+        else
+        {
+            animator.SetBool("MovingFront", false);
+        }
     }
 
     void FixedUpdate()
