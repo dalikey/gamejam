@@ -51,6 +51,7 @@ MonoBehaviour:
   movementSpeed: 3
   lifeTime: 30
   damage: 1
+  scoreManager: {fileID: 7878399061932840368, guid: 8f75a219158efb046b37b048155189f7, type: 3}
 --- !u!212 &7825346049795222691
 SpriteRenderer:
   m_ObjectHideFlags: 0
