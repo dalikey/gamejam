@@ -3,12 +3,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private Animator animator;
+    public int health = 5;
     private Rigidbody2D rb2d;
     private Vector2 movementDirection;
 
     private float minX, maxX, minY, maxY;
 
-    public Animator animator;
 
     void Start()
     {

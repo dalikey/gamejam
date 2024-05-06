@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float movementSpeed = 3f;
-    public float lifeTime = 5f;
-
+    [SerializeField] private float movementSpeed = 3f;
+    [SerializeField] private float lifeTime = 5f;
+    [SerializeField] private int damage = 1;
     private Rigidbody2D rb2d;
     private GameObject player;
-
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -42,5 +41,15 @@ public class EnemyController : MonoBehaviour
     public void SetPlayer(GameObject newPlayer)
     {
         player = newPlayer;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerController>().health -= damage;
+            Debug.Log(other.GetComponent<PlayerController>().health);
+            Destroy(gameObject);
+        }
     }
 }
